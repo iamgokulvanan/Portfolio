@@ -65,14 +65,18 @@ h2::after{content:"";display:block;width:40px;height:3px;background:var(--accent
 .proj{cursor:pointer;transition:.2s}
 .proj:hover,.proj:focus-visible{border-color:var(--accent);transform:translateY(-2px);outline:none}
 .proj .more{display:inline-block;margin-top:10px;font-size:.85rem;font-weight:600;color:var(--accent)}
+.cert-thumb{width:100%;height:175px;border-radius:10px;overflow:hidden;background:var(--bg);border:1px solid var(--border);margin-bottom:14px;display:flex;align-items:center;justify-content:center}
+.cert-thumb img{width:100%;height:100%;object-fit:cover;object-position:top center;transition:transform .3s ease;display:block}
+.proj:hover .cert-thumb img{transform:scale(1.04)}
 .modal{position:fixed;inset:0;background:rgba(0,0,0,.55);display:flex;align-items:flex-end;justify-content:center;z-index:50;padding:0;opacity:0;pointer-events:none;transition:opacity .2s}
 .modal.open{opacity:1;pointer-events:auto}
-.sheet{background:var(--surface);color:var(--text);width:100%;max-width:640px;max-height:90%;overflow-y:auto;border-radius:20px 20px 0 0;padding:18px 20px calc(24px + env(safe-area-inset-bottom,0px));border:1px solid var(--border)}
+.sheet{background:var(--surface);color:var(--text);width:100%;max-width:760px;max-height:92%;overflow-y:auto;border-radius:20px 20px 0 0;padding:20px 24px calc(24px + env(safe-area-inset-bottom,0px));border:1px solid var(--border)}
 @media (min-width:700px){.modal{align-items:center;padding:20px}.sheet{border-radius:20px}}
 .sheet-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px}
 .sheet-top span{font-size:.8rem;font-weight:700;color:var(--accent);text-transform:uppercase;letter-spacing:.05em}
 .close{border:1px solid var(--border);background:var(--bg);color:var(--text);width:36px;height:36px;border-radius:50%;font-size:1.1rem;cursor:pointer}
-.preview{border:1px solid var(--border);border-radius:12px;overflow:hidden;background:var(--bg);margin-bottom:14px}
+.preview{border:1px solid var(--border);border-radius:12px;overflow:hidden;background:var(--bg);margin-bottom:14px;max-height:420px;display:flex;align-items:center;justify-content:center}
+.preview img{width:100%;height:auto;max-height:400px;object-fit:contain;display:block}
 .preview svg{display:block;width:100%;height:auto}
 .sheet h3{font-size:1.3rem;margin:0 0 6px}
 .sheet p{color:var(--muted);margin:0 0 12px}
@@ -267,112 +271,128 @@ footer{text-align:center;color:var(--muted);font-size:.85rem;padding:24px 20px}
       <button class="tab" type="button" data-filter="professional" data-grid="certGrid">Professional (4)</button>
     </div>
     <div class="grid" id="certGrid">
-      <div class="card proj" tabindex="0" role="button" data-type="Certificate" data-category="cloud-ai" data-title="Cloud Computing (12-Week Elite Certification)" data-desc="Awarded Elite certification for successfully completing the rigorous 12-week Cloud Computing course by IIT Kharagpur (NPTEL, Ministry of Education, Govt. of India). Achieved an overall score of 71% with a perfect 25/25 in course assignments. Validated deep expertise in virtualization, cloud infrastructure, distributed systems, and security." data-tools="Cloud Computing,Virtualization,Distributed Systems,NPTEL,IIT Kharagpur" data-link="assets/certificates/nptel-cloud-computing.pdf">
+      <div class="card proj cert-card" tabindex="0" role="button" data-type="Certificate" data-category="cloud-ai" data-title="Cloud Computing (12-Week Elite Certification)" data-desc="Awarded Elite certification for successfully completing the rigorous 12-week Cloud Computing course by IIT Kharagpur (NPTEL, Ministry of Education, Govt. of India). Achieved an overall score of 71% with a perfect 25/25 in course assignments. Validated deep expertise in virtualization, cloud infrastructure, distributed systems, and security." data-tools="Cloud Computing,Virtualization,Distributed Systems,NPTEL,IIT Kharagpur" data-link="assets/certificates/nptel-cloud-computing.pdf" data-preview="assets/certificates/previews/nptel-cloud-computing.jpg">
+        <div class="cert-thumb"><img src="assets/certificates/previews/nptel-cloud-computing.jpg" alt="Cloud Computing Elite preview" loading="lazy"></div>
         <h3>Cloud Computing (Elite 71%)</h3>
         <p>NPTEL &amp; IIT Kharagpur · 12-Week Course</p>
         <div class="cert-meta">Jan – Apr 2026 · Elite Certification</div>
         <span class="more">View certificate →</span>
       </div>
 
-      <div class="card proj" tabindex="0" role="button" data-type="Certificate" data-category="cloud-ai" data-title="Building AI Agents with MongoDB" data-desc="Verified badge by MongoDB on Credly demonstrating skills in designing and building autonomous AI agents powered by MongoDB document models and operational data stores. Covers agent tool calling, agent memory, and LLM reasoning loops." data-tools="AI Agents,MongoDB,LLMs,Automation,Credly" data-link="assets/certificates/mongodb-building-ai-agents.pdf">
+      <div class="card proj cert-card" tabindex="0" role="button" data-type="Certificate" data-category="cloud-ai" data-title="Building AI Agents with MongoDB" data-desc="Verified badge by MongoDB on Credly demonstrating skills in designing and building autonomous AI agents powered by MongoDB document models and operational data stores. Covers agent tool calling, agent memory, and LLM reasoning loops." data-tools="AI Agents,MongoDB,LLMs,Automation,Credly" data-link="assets/certificates/mongodb-building-ai-agents.pdf" data-preview="assets/certificates/previews/mongodb-building-ai-agents.jpg">
+        <div class="cert-thumb"><img src="assets/certificates/previews/mongodb-building-ai-agents.jpg" alt="Building AI Agents with MongoDB preview" loading="lazy"></div>
         <h3>Building AI Agents with MongoDB</h3>
         <p>MongoDB · Credly Verified</p>
         <div class="cert-meta">Jul 2026 · Credly Badge</div>
         <span class="more">View certificate →</span>
       </div>
 
-      <div class="card proj" tabindex="0" role="button" data-type="Certificate" data-category="cloud-ai" data-title="Building RAG Apps Using MongoDB" data-desc="Verified credential by MongoDB on Credly for mastering Retrieval-Augmented Generation (RAG) architecture. Focuses on building vector search pipelines, semantic chunking, prompt engineering, context injection, and real-time knowledge retrieval for LLMs." data-tools="RAG,MongoDB Atlas,Vector Search,Embeddings,LLMs" data-link="assets/certificates/mongodb-building-rag-apps.pdf">
+      <div class="card proj cert-card" tabindex="0" role="button" data-type="Certificate" data-category="cloud-ai" data-title="Building RAG Apps Using MongoDB" data-desc="Verified credential by MongoDB on Credly for mastering Retrieval-Augmented Generation (RAG) architecture. Focuses on building vector search pipelines, semantic chunking, prompt engineering, context injection, and real-time knowledge retrieval for LLMs." data-tools="RAG,MongoDB Atlas,Vector Search,Embeddings,LLMs" data-link="assets/certificates/mongodb-building-rag-apps.pdf" data-preview="assets/certificates/previews/mongodb-building-rag-apps.jpg">
+        <div class="cert-thumb"><img src="assets/certificates/previews/mongodb-building-rag-apps.jpg" alt="Building RAG Apps Using MongoDB preview" loading="lazy"></div>
         <h3>Building RAG Apps Using MongoDB</h3>
         <p>MongoDB · Credly Verified</p>
         <div class="cert-meta">Jul 2026 · Credly Badge</div>
         <span class="more">View certificate →</span>
       </div>
 
-      <div class="card proj" tabindex="0" role="button" data-type="Certificate" data-category="cloud-ai" data-title="Building AI-Powered Search with MongoDB Vector Search" data-desc="Credential by MongoDB on Credly demonstrating proficiency in setting up vector search indexes, semantic embedding storage, cosine/kNN similarity queries, and hybrid search capabilities in MongoDB Atlas for AI applications." data-tools="Vector Search,Semantic Search,Embeddings,MongoDB Atlas" data-link="assets/certificates/mongodb-ai-vector-search.pdf">
+      <div class="card proj cert-card" tabindex="0" role="button" data-type="Certificate" data-category="cloud-ai" data-title="Building AI-Powered Search with MongoDB Vector Search" data-desc="Credential by MongoDB on Credly demonstrating proficiency in setting up vector search indexes, semantic embedding storage, cosine/kNN similarity queries, and hybrid search capabilities in MongoDB Atlas for AI applications." data-tools="Vector Search,Semantic Search,Embeddings,MongoDB Atlas" data-link="assets/certificates/mongodb-ai-vector-search.pdf" data-preview="assets/certificates/previews/mongodb-ai-vector-search.jpg">
+        <div class="cert-thumb"><img src="assets/certificates/previews/mongodb-ai-vector-search.jpg" alt="AI Search and Vector Search preview" loading="lazy"></div>
         <h3>AI Search &amp; Vector Search</h3>
         <p>MongoDB · Credly Verified</p>
         <div class="cert-meta">Jul 2026 · Credly Badge</div>
         <span class="more">View certificate →</span>
       </div>
 
-      <div class="card proj" tabindex="0" role="button" data-type="Certificate" data-category="cloud-ai" data-title="AI and Innovation: How MongoDB Enables a Resilient AI Strategy" data-desc="Verified Credly credential by MongoDB exploring strategic frameworks for enterprise AI architectures, focusing on data consistency, high availability, low latency inference, and data governance for modern AI applications." data-tools="AI Strategy,Enterprise AI,Scalability,MongoDB" data-link="assets/certificates/mongodb-resilient-ai-strategy.pdf">
+      <div class="card proj cert-card" tabindex="0" role="button" data-type="Certificate" data-category="cloud-ai" data-title="AI and Innovation: How MongoDB Enables a Resilient AI Strategy" data-desc="Verified Credly credential by MongoDB exploring strategic frameworks for enterprise AI architectures, focusing on data consistency, high availability, low latency inference, and data governance for modern AI applications." data-tools="AI Strategy,Enterprise AI,Scalability,MongoDB" data-link="assets/certificates/mongodb-resilient-ai-strategy.pdf" data-preview="assets/certificates/previews/mongodb-resilient-ai-strategy.jpg">
+        <div class="cert-thumb"><img src="assets/certificates/previews/mongodb-resilient-ai-strategy.jpg" alt="Resilient AI Strategy with MongoDB preview" loading="lazy"></div>
         <h3>Resilient AI Strategy with MongoDB</h3>
         <p>MongoDB · Credly Verified</p>
         <div class="cert-meta">Jul 2026 · Credly Badge</div>
         <span class="more">View certificate →</span>
       </div>
 
-      <div class="card proj" tabindex="0" role="button" data-type="Certificate" data-category="cloud-ai" data-title="MongoDB Basics for Students" data-desc="Official certification by MongoDB covering core NoSQL database principles, JSON document modeling, CRUD operations, aggregation pipelines, and indexing strategies in MongoDB Atlas." data-tools="MongoDB,NoSQL,Document Databases,CRUD,Aggregation" data-link="assets/certificates/mongodb-basics-for-students.pdf">
+      <div class="card proj cert-card" tabindex="0" role="button" data-type="Certificate" data-category="cloud-ai" data-title="MongoDB Basics for Students" data-desc="Official certification by MongoDB covering core NoSQL database principles, JSON document modeling, CRUD operations, aggregation pipelines, and indexing strategies in MongoDB Atlas." data-tools="MongoDB,NoSQL,Document Databases,CRUD,Aggregation" data-link="assets/certificates/mongodb-basics-for-students.pdf" data-preview="assets/certificates/previews/mongodb-basics-for-students.jpg">
+        <div class="cert-thumb"><img src="assets/certificates/previews/mongodb-basics-for-students.jpg" alt="MongoDB Basics for Students preview" loading="lazy"></div>
         <h3>MongoDB Basics for Students</h3>
         <p>MongoDB · Credly Verified</p>
         <div class="cert-meta">Jul 2026 · Credly Badge</div>
         <span class="more">View certificate →</span>
       </div>
 
-      <div class="card proj" tabindex="0" role="button" data-type="Certificate" data-category="cloud-ai" data-title="AI in Data Analytics Workshop" data-desc="Completed hands-on practical workshop on AI in Data Analytics conducted by Pumo Technovation in collaboration with Hindusthan College of Engineering and Technology (HICET), Coimbatore. Covered automated data extraction, exploratory data analysis, and predictive models." data-tools="AI,Data Analytics,Python,Pumo Technovation,HICET" data-link="assets/certificates/ai-data-analytics-workshop.jpeg">
+      <div class="card proj cert-card" tabindex="0" role="button" data-type="Certificate" data-category="cloud-ai" data-title="AI in Data Analytics Workshop" data-desc="Completed hands-on practical workshop on AI in Data Analytics conducted by Pumo Technovation in collaboration with Hindusthan College of Engineering and Technology (HICET), Coimbatore. Covered automated data extraction, exploratory data analysis, and predictive models." data-tools="AI,Data Analytics,Python,Pumo Technovation,HICET" data-link="assets/certificates/ai-data-analytics-workshop.jpeg" data-preview="assets/certificates/previews/ai-data-analytics-workshop.jpg">
+        <div class="cert-thumb"><img src="assets/certificates/previews/ai-data-analytics-workshop.jpg" alt="AI in Data Analytics Workshop preview" loading="lazy"></div>
         <h3>AI in Data Analytics Workshop</h3>
         <p>Pumo Technovation &amp; HICET</p>
         <div class="cert-meta">Aug 2025 · Coimbatore</div>
         <span class="more">View certificate →</span>
       </div>
 
-      <div class="card proj" tabindex="0" role="button" data-type="Certificate" data-category="web-python" data-title="Web Development Internship" data-desc="Successfully completed a 2-month professional Web Development Internship from 15/11/2025 to 15/01/2026 at Learn Flu (AICTE & MSME Approved). Gained practical experience building interactive frontend components, client-side features, and responsive layouts." data-tools="Web Development,HTML,CSS,JavaScript,Internship,AICTE" data-link="assets/certificates/web-development-internship.jpeg">
+      <div class="card proj cert-card" tabindex="0" role="button" data-type="Certificate" data-category="web-python" data-title="Web Development Internship" data-desc="Successfully completed a 2-month professional Web Development Internship from 15/11/2025 to 15/01/2026 at Learn Flu (AICTE & MSME Approved). Gained practical experience building interactive frontend components, client-side features, and responsive layouts." data-tools="Web Development,HTML,CSS,JavaScript,Internship,AICTE" data-link="assets/certificates/web-development-internship.jpeg" data-preview="assets/certificates/previews/web-development-internship.jpg">
+        <div class="cert-thumb"><img src="assets/certificates/previews/web-development-internship.jpg" alt="Web Development Internship preview" loading="lazy"></div>
         <h3>Web Development Internship</h3>
         <p>Learn Flu · AICTE &amp; MSME Approved</p>
         <div class="cert-meta">Nov 2025 – Jan 2026 · Internship</div>
         <span class="more">View certificate →</span>
       </div>
 
-      <div class="card proj" tabindex="0" role="button" data-type="Certificate" data-category="web-python" data-title="Web Development Course" data-desc="Certified in Web Development by Learn Flu (AICTE & MSME Approved, Reg. No: LF14698). Covered foundational and intermediate web development principles, semantic HTML, modern CSS styling, DOM manipulation, and dynamic user interfaces." data-tools="HTML5,CSS3,JavaScript,Frontend,AICTE" data-link="assets/certificates/web-development-course.jpeg">
+      <div class="card proj cert-card" tabindex="0" role="button" data-type="Certificate" data-category="web-python" data-title="Web Development Course" data-desc="Certified in Web Development by Learn Flu (AICTE & MSME Approved, Reg. No: LF14698). Covered foundational and intermediate web development principles, semantic HTML, modern CSS styling, DOM manipulation, and dynamic user interfaces." data-tools="HTML5,CSS3,JavaScript,Frontend,AICTE" data-link="assets/certificates/web-development-course.jpeg" data-preview="assets/certificates/previews/web-development-course.jpg">
+        <div class="cert-thumb"><img src="assets/certificates/previews/web-development-course.jpg" alt="Web Development Course preview" loading="lazy"></div>
         <h3>Web Development Course</h3>
         <p>Learn Flu · Reg No: LF14698</p>
         <div class="cert-meta">Jan 2026 · AICTE Approved</div>
         <span class="more">View certificate →</span>
       </div>
 
-      <div class="card proj" tabindex="0" role="button" data-type="Certificate" data-category="web-python" data-title="Python Foundation Certification" data-desc="Earned the Python Foundation Certification from Infosys Springboard (Wingspan). Validates strong proficiency in Python programming syntax, control structures, functions, OOP principles, and data manipulation." data-tools="Python,OOP,Data Structures,Algorithms,Infosys Springboard" data-link="assets/certificates/python-foundation-infosys.pdf">
+      <div class="card proj cert-card" tabindex="0" role="button" data-type="Certificate" data-category="web-python" data-title="Python Foundation Certification" data-desc="Earned the Python Foundation Certification from Infosys Springboard (Wingspan). Validates strong proficiency in Python programming syntax, control structures, functions, OOP principles, and data manipulation." data-tools="Python,OOP,Data Structures,Algorithms,Infosys Springboard" data-link="assets/certificates/python-foundation-infosys.pdf" data-preview="assets/certificates/previews/python-foundation-infosys.jpg">
+        <div class="cert-thumb"><img src="assets/certificates/previews/python-foundation-infosys.jpg" alt="Python Foundation Certification preview" loading="lazy"></div>
         <h3>Python Foundation Certification</h3>
         <p>Infosys Springboard (Wingspan)</p>
         <div class="cert-meta">Jun 2026 · Verified Credential</div>
         <span class="more">View certificate →</span>
       </div>
 
-      <div class="card proj" tabindex="0" role="button" data-type="Certificate" data-category="web-python" data-title="Basics of Python" data-desc="Completed course certification on Basics of Python awarded by Infosys Springboard (Wingspan). Covered computational thinking, variables, data types, conditional branching, loops, and reusable function design." data-tools="Python,Logic Building,Functions,Infosys Springboard" data-link="assets/certificates/python-basics-infosys.pdf">
+      <div class="card proj cert-card" tabindex="0" role="button" data-type="Certificate" data-category="web-python" data-title="Basics of Python" data-desc="Completed course certification on Basics of Python awarded by Infosys Springboard (Wingspan). Covered computational thinking, variables, data types, conditional branching, loops, and reusable function design." data-tools="Python,Logic Building,Functions,Infosys Springboard" data-link="assets/certificates/python-basics-infosys.pdf" data-preview="assets/certificates/previews/python-basics-infosys.jpg">
+        <div class="cert-thumb"><img src="assets/certificates/previews/python-basics-infosys.jpg" alt="Basics of Python preview" loading="lazy"></div>
         <h3>Basics of Python</h3>
         <p>Infosys Springboard (Wingspan)</p>
         <div class="cert-meta">May 2026 · Verified Credential</div>
         <span class="more">View certificate →</span>
       </div>
 
-      <div class="card proj" tabindex="0" role="button" data-type="Certificate" data-category="web-python" data-title="Python Concurrent Programming: Multiprocessing" data-desc="Completed advanced course in Python Concurrent Programming: Multiprocessing. Learned how to bypass the GIL (Global Interpreter Lock), spawn multi-process workers, implement process pools, and optimize high-throughput computation in Python." data-tools="Python,Multiprocessing,Concurrency,Parallel Computing" data-link="assets/certificates/python-multiprocessing.pdf">
+      <div class="card proj cert-card" tabindex="0" role="button" data-type="Certificate" data-category="web-python" data-title="Python Concurrent Programming: Multiprocessing" data-desc="Completed advanced course in Python Concurrent Programming: Multiprocessing. Learned how to bypass the GIL (Global Interpreter Lock), spawn multi-process workers, implement process pools, and optimize high-throughput computation in Python." data-tools="Python,Multiprocessing,Concurrency,Parallel Computing" data-link="assets/certificates/python-multiprocessing.pdf" data-preview="assets/certificates/previews/python-multiprocessing.jpg">
+        <div class="cert-thumb"><img src="assets/certificates/previews/python-multiprocessing.jpg" alt="Python Multiprocessing and Concurrency preview" loading="lazy"></div>
         <h3>Python Multiprocessing &amp; Concurrency</h3>
         <p>Certificate of Completion</p>
         <div class="cert-meta">May 2026 · Parallel Programming</div>
         <span class="more">View certificate →</span>
       </div>
 
-      <div class="card proj" tabindex="0" role="button" data-type="Certificate" data-category="professional" data-title="Email Etiquette &amp; Professional Communication" data-desc="Certified in Email Etiquette by TCS iON (Tata Consultancy Services, Cert ID: 66785-28924972-1016). Comprehensive training on formal business writing, professional tone, email structuring, dos & don'ts, and corporate communication best practices." data-tools="Business Communication,Email Etiquette,TCS iON,Professional Skills" data-link="assets/certificates/email-etiquette-tcs.jpeg">
+      <div class="card proj cert-card" tabindex="0" role="button" data-type="Certificate" data-category="professional" data-title="Email Etiquette &amp; Professional Communication" data-desc="Certified in Email Etiquette by TCS iON (Tata Consultancy Services, Cert ID: 66785-28924972-1016). Comprehensive training on formal business writing, professional tone, email structuring, dos & don'ts, and corporate communication best practices." data-tools="Business Communication,Email Etiquette,TCS iON,Professional Skills" data-link="assets/certificates/email-etiquette-tcs.jpeg" data-preview="assets/certificates/previews/email-etiquette-tcs.jpg">
+        <div class="cert-thumb"><img src="assets/certificates/previews/email-etiquette-tcs.jpg" alt="Email Etiquette preview" loading="lazy"></div>
         <h3>Email Etiquette</h3>
         <p>TCS iON · Tata Consultancy Services</p>
         <div class="cert-meta">Aug 2025 · ID: 66785-28924972-1016</div>
         <span class="more">View certificate →</span>
       </div>
 
-      <div class="card proj" tabindex="0" role="button" data-type="Certificate" data-category="professional" data-title="National Financial Literacy Quiz 2026 (Online Round)" data-desc="Awarded by the National Institute of Securities Markets (NISM) and Securities and Exchange Board of India (SEBI) for outstanding participation in the National Financial Literacy Quiz 2026 in the Undergraduate Category representing HICET." data-tools="Financial Literacy,SEBI,NISM,Securities Markets" data-link="assets/certificates/nism-sebi-online-quiz.jpeg">
+      <div class="card proj cert-card" tabindex="0" role="button" data-type="Certificate" data-category="professional" data-title="National Financial Literacy Quiz 2026 (Online Round)" data-desc="Awarded by the National Institute of Securities Markets (NISM) and Securities and Exchange Board of India (SEBI) for outstanding participation in the National Financial Literacy Quiz 2026 in the Undergraduate Category representing HICET." data-tools="Financial Literacy,SEBI,NISM,Securities Markets" data-link="assets/certificates/nism-sebi-online-quiz.jpeg" data-preview="assets/certificates/previews/nism-sebi-online-quiz.jpg">
+        <div class="cert-thumb"><img src="assets/certificates/previews/nism-sebi-online-quiz.jpg" alt="Financial Literacy Quiz Online Round preview" loading="lazy"></div>
         <h3>Financial Literacy Quiz (Online Round)</h3>
         <p>NISM &amp; SEBI · UG Category</p>
         <div class="cert-meta">2026 · National Level</div>
         <span class="more">View certificate →</span>
       </div>
 
-      <div class="card proj" tabindex="0" role="button" data-type="Certificate" data-category="professional" data-title="National Financial Literacy Quiz 2026 (College Round)" data-desc="Participant certificate awarded by NISM and SEBI in coordination with the Department of Technology, Hindusthan College of Engineering and Technology for the college round of the National Financial Literacy Quiz 2026." data-tools="Financial Literacy,NISM,SEBI,HICET" data-link="assets/certificates/nism-sebi-college-quiz.pdf">
+      <div class="card proj cert-card" tabindex="0" role="button" data-type="Certificate" data-category="professional" data-title="National Financial Literacy Quiz 2026 (College Round)" data-desc="Participant certificate awarded by NISM and SEBI in coordination with the Department of Technology, Hindusthan College of Engineering and Technology for the college round of the National Financial Literacy Quiz 2026." data-tools="Financial Literacy,NISM,SEBI,HICET" data-link="assets/certificates/nism-sebi-college-quiz.pdf" data-preview="assets/certificates/previews/nism-sebi-college-quiz.jpg">
+        <div class="cert-thumb"><img src="assets/certificates/previews/nism-sebi-college-quiz.jpg" alt="Financial Literacy Quiz College Round preview" loading="lazy"></div>
         <h3>Financial Literacy Quiz (College Round)</h3>
         <p>NISM &amp; SEBI · Dept of Tech, HICET</p>
         <div class="cert-meta">2026 · College Round</div>
         <span class="more">View certificate →</span>
       </div>
 
-      <div class="card proj" tabindex="0" role="button" data-type="Certificate" data-category="professional" data-title="Drug-Free Tamil Nadu Youth Awareness Pledge" data-desc="State government awareness initiative and pledge certificate from the Government of Tamil Nadu encouraging social responsibility, youth wellness, and civic leadership." data-tools="Social Responsibility,Govt of Tamil Nadu,Civic Awareness" data-link="assets/certificates/drug-free-tn.pdf">
+      <div class="card proj cert-card" tabindex="0" role="button" data-type="Certificate" data-category="professional" data-title="Drug-Free Tamil Nadu Youth Awareness Pledge" data-desc="State government awareness initiative and pledge certificate from the Government of Tamil Nadu encouraging social responsibility, youth wellness, and civic leadership." data-tools="Social Responsibility,Govt of Tamil Nadu,Civic Awareness" data-link="assets/certificates/drug-free-tn.pdf" data-preview="assets/certificates/previews/drug-free-tn.jpg">
+        <div class="cert-thumb"><img src="assets/certificates/previews/drug-free-tn.jpg" alt="Drug-Free Tamil Nadu Initiative preview" loading="lazy"></div>
         <h3>Drug-Free Tamil Nadu Initiative</h3>
         <p>Government of Tamil Nadu</p>
         <div class="cert-meta">Aug 2026 · State Initiative</div>
@@ -486,11 +506,16 @@ footer{text-align:center;color:var(--muted);font-size:.85rem;padding:24px 20px}
     var certBox=document.getElementById('mCert');
     certBox.classList.toggle('hidden',!isCert);
     if(isCert){
-      var img=document.getElementById('mCertImg'),svg=document.getElementById('mCertSvg'),link=c.dataset.link||'';
-      if(link.match(/\.(jpeg|jpg|png|webp)$/i)){
-        img.src=link;img.classList.remove('hidden');svg.classList.add('hidden');
-      }else{
-        img.classList.add('hidden');svg.classList.remove('hidden');
+      var img=document.getElementById('mCertImg'),svg=document.getElementById('mCertSvg');
+      var prevSrc=c.dataset.preview||(c.dataset.link&&c.dataset.link.match(/\.(jpeg|jpg|png|webp)$/i)?c.dataset.link:'');
+      if(prevSrc){
+        img.src=prevSrc;
+        img.alt=c.dataset.title||'Certificate Preview';
+        img.classList.remove('hidden');
+        if(svg)svg.classList.add('hidden');
+      }else if(svg){
+        img.classList.add('hidden');
+        svg.classList.remove('hidden');
       }
     }
     l.textContent=isCert?'Open / Download Certificate ↗':'View project ↗';
