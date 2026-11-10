@@ -51,7 +51,7 @@ h2::after{content:"";display:block;width:40px;height:3px;background:var(--accent
 .tabs{display:flex;gap:8px;margin-bottom:16px}
 .tab{border:1px solid var(--border);background:var(--surface);color:var(--muted);padding:8px 16px;border-radius:999px;font-weight:600;cursor:pointer}
 .tab.active{background:var(--accent);border-color:var(--accent);color:#fff}
-.hidden{display:none}
+.hidden{display:none !important}
 .links{display:grid;gap:10px;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));margin-top:16px}
 .link{display:flex;align-items:center;gap:10px;padding:12px 14px;border:1px solid var(--border);border-radius:12px;background:var(--bg);color:var(--text);text-decoration:none;font-weight:600;overflow-wrap:anywhere}
 .link:hover{border-color:var(--accent);color:var(--accent)}
@@ -68,6 +68,10 @@ h2::after{content:"";display:block;width:40px;height:3px;background:var(--accent
 .cert-thumb{width:100%;height:175px;border-radius:10px;overflow:hidden;background:var(--bg);border:1px solid var(--border);margin-bottom:14px;display:flex;align-items:center;justify-content:center}
 .cert-thumb img{width:100%;height:100%;object-fit:cover;object-position:top center;transition:transform .3s ease;display:block}
 .proj:hover .cert-thumb img{transform:scale(1.04)}
+.cert-preview-box{width:100%;border-radius:12px;overflow:hidden;background:var(--bg);border:1px solid var(--border);margin-bottom:16px;display:flex;align-items:center;justify-content:center;padding:12px;box-shadow:0 4px 16px rgba(0,0,0,.1)}
+.cert-preview-box a{display:block;width:100%;text-align:center;cursor:zoom-in}
+.cert-preview-box img{display:block;width:100%;height:auto;max-height:480px;object-fit:contain;margin:0 auto;border-radius:8px;box-shadow:0 2px 12px rgba(0,0,0,.15);transition:transform .2s ease}
+.cert-preview-box a:hover img{transform:scale(1.015)}
 .modal{position:fixed;inset:0;background:rgba(0,0,0,.55);display:flex;align-items:flex-end;justify-content:center;z-index:50;padding:0;opacity:0;pointer-events:none;transition:opacity .2s}
 .modal.open{opacity:1;pointer-events:auto}
 .sheet{background:var(--surface);color:var(--text);width:100%;max-width:760px;max-height:92%;overflow-y:auto;border-radius:20px 20px 0 0;padding:20px 24px calc(24px + env(safe-area-inset-bottom,0px));border:1px solid var(--border)}
@@ -460,19 +464,10 @@ footer{text-align:center;color:var(--muted);font-size:.85rem;padding:24px 20px}
         <rect x="200" y="110" width="80" height="50" rx="8" fill="#5b4bff" opacity=".3"/>
       </svg>
     </div>
-    <div class="preview hidden" id="mCert">
-      <img id="mCertImg" src="" alt="Certificate Preview" class="hidden" style="display:block;width:100%;height:auto;max-height:300px;object-fit:contain;margin:auto;border-radius:8px">
-      <svg id="mCertSvg" viewBox="0 0 320 220" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-        <rect x="8" y="8" width="304" height="204" rx="6" fill="none" stroke="#5b4bff" stroke-width="3"/>
-        <rect x="16" y="16" width="288" height="188" rx="4" fill="none" stroke="#8a7dff" stroke-width="1"/>
-        <rect x="90" y="36" width="140" height="14" rx="4" fill="#5b4bff"/>
-        <rect x="110" y="62" width="100" height="6" rx="3" fill="#5b4bff" opacity=".4"/>
-        <rect x="70" y="92" width="180" height="12" rx="4" fill="#8a7dff" opacity=".6"/>
-        <rect x="50" y="120" width="220" height="6" rx="3" fill="#5b4bff" opacity=".3"/>
-        <rect x="70" y="134" width="180" height="6" rx="3" fill="#5b4bff" opacity=".3"/>
-        <circle cx="160" cy="176" r="16" fill="#5b4bff" opacity=".8"/>
-        <path d="m153 176 5 5 9-10" stroke="#fff" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
-      </svg>
+    <div class="cert-preview-box hidden" id="mCert">
+      <a id="mCertLink" href="#" target="_blank" rel="noopener" title="Click to view full certificate">
+        <img id="mCertImg" src="" alt="Certificate Preview">
+      </a>
     </div>
     <h3 id="mTitle"></h3>
     <p id="mDesc"></p>
@@ -502,26 +497,26 @@ footer{text-align:center;color:var(--muted);font-size:.85rem;padding:24px 20px}
     var l=document.getElementById('mLink');
     if(c.dataset.link){l.href=c.dataset.link;l.style.display=''}else{l.style.display='none'}
     var isCert=c.dataset.type==='Certificate';
-    document.getElementById('mPrev').classList.toggle('hidden',isCert);
+    var prevBox=document.getElementById('mPrev');
     var certBox=document.getElementById('mCert');
-    certBox.classList.toggle('hidden',!isCert);
     if(isCert){
-      var img=document.getElementById('mCertImg'),svg=document.getElementById('mCertSvg');
+      prevBox.classList.add('hidden');
+      certBox.classList.remove('hidden');
+      var img=document.getElementById('mCertImg');
+      var certLink=document.getElementById('mCertLink');
       var prevSrc=c.dataset.preview||(c.dataset.link&&c.dataset.link.match(/\.(jpeg|jpg|png|webp)$/i)?c.dataset.link:'');
-      if(prevSrc){
-        img.src=prevSrc;
-        img.alt=c.dataset.title||'Certificate Preview';
-        img.classList.remove('hidden');
-        if(svg)svg.classList.add('hidden');
-      }else if(svg){
-        img.classList.add('hidden');
-        svg.classList.remove('hidden');
-      }
+      img.src=prevSrc;
+      img.alt=c.dataset.title||'Certificate Preview';
+      if(certLink){certLink.href=c.dataset.link||prevSrc}
+      l.textContent='Open / Download Certificate ↗';
+    }else{
+      prevBox.classList.remove('hidden');
+      certBox.classList.add('hidden');
+      l.textContent='View project ↗';
     }
-    l.textContent=isCert?'Open / Download Certificate ↗':'View project ↗';
     modal.classList.add('open');modal.setAttribute('aria-hidden','false');
   }
-  function closeProj(){modal.classList.remove('open');modal.setAttribute('aria-hidden','true')}
+  function closeProj(){modal.classList.remove('open');modal.setAttribute('aria-hidden','true');var img=document.getElementById('mCertImg');if(img){img.src=''}}
   document.querySelectorAll('.proj').forEach(function(c){
     c.addEventListener('click',function(){openProj(c)});
     c.addEventListener('keydown',function(e){if(e.key==='Enter'||e.key===' '){e.preventDefault();openProj(c)}});
